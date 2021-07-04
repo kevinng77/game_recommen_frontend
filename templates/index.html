@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>游戏画廊</title>
     <style>
         * {
     margin: 0;
@@ -92,42 +91,49 @@ span {
     </style>
     <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
     <script>
-$(document).ready(function(){
-	$(".loadmore").click(function(){
-		$.ajax({url:"/loadmore",success:function(result){
-			$(".items").append(result);
-		}});
-	});
-});
+        $(document).ready(function(){
+        	$(".loadmore").click(function(){
+        		$.ajax({url:"/loadmore",success:function(result){
+        			$(".items").append(result);
+        		}});
+        	});
+        });
     </script>
+    <script>
+         function load_detail(url,name){
+            window.open(url);
+            $.get("/click", {msg: name}).done();
+        }
+    </script>
+
+
 
 </head>
 <body>
-<!-- wrapper -->
 <div class="wrapper">
     <h1>Games Gallary</h1>
-    <div class="items">
-        {% for name,pic,price,url in buffer %}
-        <div class="item">
-            <div class="img_block">
-            <img src={{pic}} alt="item" />
+        <div class="items">
+            {% for name,pic,price,url in buffer %}
+            <div class="item">
+                <div class="img_block">
+                    <img src={{pic}} alt="item" />
                 </div>
-            <div class="name_block">
-                <h2>{{name}}</h2>
+                <div class="name_block">
+                    <h2>{{name}}</h2>
+                </div>
+                <div>
+                    <a  class="price">Price: <em>${{price}}</em></a>
+                    <a class="details"  onclick="load_detail('{{url}}','{{name}}')">
+                    <em>Details>></em>
+                    </a>
+                </div>
             </div>
-            <div>
-                <a  class="price">Price: <em>${{price}}</em></a>
-            <a class="details"  onclick="window.open('{{url}}')">
-                <em>Details>></em>
-            </a>
-            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
-    </div>
         <div class = "load_block">
-        <p> </p>
-        <a class="loadmore"> <<< load more >>> </a>
+            <p> </p>
+            <a class="loadmore"> <<< load more >>> </a>
+        </div>
     </div>
-</div>
 </body>
 </html>

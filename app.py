@@ -33,7 +33,11 @@ def load_more():
     current_id += config.num_more_line*3
     return outputs
 
-
-
+@app.route('/click')
+def click():
+    text = request.args.get('msg')
+    # TODO 通过用户点击更新推荐列表
+    print(text)
+    return 'None'
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000, debug=True)
