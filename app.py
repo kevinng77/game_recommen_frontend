@@ -13,7 +13,7 @@ app = Flask(__name__)
 applist = pd.read_csv(config.game_info_path)
 
 
-selected_ids = random.choices(applist.AppID, k=500)
+selected_ids = random.choices(applist.AppID, k=1000)
 msg = web_utils.gen_msg(applist, config.max_title_len, selected_ids)
 current_id = config.num_show
 @app.route('/')
