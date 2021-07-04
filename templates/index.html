@@ -60,8 +60,8 @@ h2 {
     margin: 0 0 10px 0;
     padding: 0 0 5px 0;
 }
-button {
-    border: 1px solid #722A1B;
+.details {
+    /*border: 1px solid #722A1B;*/
     padding: 4px 14px;
     background-color: #fff;
     color: #722A1B;
@@ -75,17 +75,39 @@ button {
 .price{
 font-size: 16px;
 }
+.load_block{
+    text-align: center;
+    font-size: 48px;
+}
+.loadmore{
+    position: relative;
+    font-size: 24px;
+    cursor: pointer;
+
+}
 span {
     float: right;
 }
+
     </style>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+$(document).ready(function(){
+	$(".loadmore").click(function(){
+		$.ajax({url:"/loadmore",success:function(result){
+			$(".items").append(result);
+		}});
+	});
+});
+    </script>
+
 </head>
 <body>
 <!-- wrapper -->
 <div class="wrapper">
     <h1>Games Gallary</h1>
     <div class="items">
-        {% for name,pic in names %}
+        {% for name,pic,price,url in buffer %}
         <div class="item">
             <div class="img_block">
             <img src={{pic}} alt="item" />
@@ -94,13 +116,17 @@ span {
                 <h2>{{name}}</h2>
             </div>
             <div>
-                <a  class="price">Price: <em>$449</em></a>
-            <button class="details" type="button" onclick="window.open('http://www.baidu.com')">
-                Details
-            </button>
+                <a  class="price">Price: <em>${{price}}</em></a>
+            <a class="details"  onclick="window.open('{{url}}')">
+                <em>Details>></em>
+            </a>
             </div>
         </div>
         {% endfor %}
+    </div>
+        <div class = "load_block">
+        <p> </p>
+        <a class="loadmore"> <<< load more >>> </a>
     </div>
 </div>
 </body>
