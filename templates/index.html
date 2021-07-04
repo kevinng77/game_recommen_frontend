@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: #F2EEE9;
+    font: normal 13px/1.5 Georgia, Serif;
+    color: #333;
+}
+.wrapper {
+    width: 705px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.items {
+    display: block;
+    margin: 20px 0;
+}
+.item {
+    background-color: #fff;
+    float: left;
+    margin: 0 10px 10px 0;
+    width: 205px;
+    padding: 10px;
+    height: 220px;
+}
+.img_block{
+    background-color: #fff;
+    float: left;
+    width: 205px;
+    height: 100px;
+}
+.name_block{
+    background-color: #fff;
+    float: left;
+    width: 205px;
+    height: 80px;
+}
+
+.item img {
+    display: block;
+    margin: auto;
+    width: 100%;
+}
+h1{
+    display: block;
+    position:relative;
+    font-size: 48px;
+}
+h2 {
+    font-size: 16px;
+    display: block;
+    margin: 0 0 10px 0;
+    padding: 0 0 5px 0;
+}
+button {
+    border: 1px solid #722A1B;
+    padding: 4px 14px;
+    background-color: #fff;
+    color: #722A1B;
+    text-transform: uppercase;
+    float: right;
+    margin: auto 0;
+    font-weight: bold;
+    cursor: pointer;
+    /*position: relative;*/
+}
+.price{
+font-size: 16px;
+}
+span {
+    float: right;
+}
+    </style>
+</head>
+<body>
+<!-- wrapper -->
+<div class="wrapper">
+    <h1>Games Gallary</h1>
+    <div class="items">
+        {% for name,pic in names %}
+        <div class="item">
+            <div class="img_block">
+            <img src={{pic}} alt="item" />
+                </div>
+            <div class="name_block">
+                <h2>{{name}}</h2>
+            </div>
+            <div>
+                <a  class="price">Price: <em>$449</em></a>
+            <button class="details" type="button" onclick="window.open('http://www.baidu.com')">
+                Details
+            </button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+</body>
+</html>
