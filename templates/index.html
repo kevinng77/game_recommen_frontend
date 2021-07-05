@@ -14,7 +14,10 @@
         });
          function load_detail(url,Appid,Appname){
             window.open(url);
-            $.get("/click", {aid: Appid,AppName:Appname}).done();
+            $.post("/click", {aid: Appid,AppName:Appname}).done();
+        }
+        function update_like(Appid, Appname, type){
+             $.post("/update_like", {aid: Appid,AppName:Appname,type:type}).done();
         }
         $(function(){
           'use strict';
@@ -80,9 +83,16 @@
             <div class="name_block">
                 <h2>{{name}}</h2>
             </div>
+
             <div class="game_tag">
                 {{other}}
+                <a class="dislike" onclick="update_like('{{Appid}}','{{name}}','dislike')">
+                    <img src="static/dislike.png"></a>
+                <a class="like" onclick="update_like('{{Appid}}','{{name}}','like')">
+                    <img src="https://cdn0.iconfinder.com/data/icons/twitter-ui-flat/48/Twitter_UI-24-256.png">
+                </a>
             </div>
+
             <div>
                 <a  class="price"><em>${{price}}</em></a>
                 <a class="details"  onclick="load_detail('{{url}}','{{Appid}}','{{name}}')">

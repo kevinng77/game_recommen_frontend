@@ -23,7 +23,7 @@
 ## To run
 
 ````python
-python app.py
+python app.py --temperature 0.5 --num_lines_load 4 --num_lines_init 8
 # or flask run
 ````
 
