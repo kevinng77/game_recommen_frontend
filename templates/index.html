@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv ="content-type" content="text/html;charset=utf-8">
     <title>游戏画廊</title>
     <style>
         * {
     margin: 0;
     padding: 0;
 }
-
 body {
     background-color: #F2EEE9;
     font: normal 13px/1.5 Georgia, Serif;
@@ -41,7 +40,7 @@ h2 {
 }
 .wrapper {
     width: 800px;
-    margin: 10px auto;
+    margin: 36px auto;
     padding: 20px;
 }
 .items {
@@ -108,7 +107,7 @@ span {
 nav{
 width: 100%;
 height: 50px;
-background: rgba(1, 1, 1, 0.7);
+background: rgba(21, 21, 21, 0.7);
 
 position: fixed;
 top: 0;
@@ -228,7 +227,7 @@ text-align: center;
                 <img src="https://cdn3.iconfinder.com/data/icons/social-rounded-2/72/GitHub-256.png">
             </a></li>
             <li id="sidebar_trigger"><a class="fa fa-bars ">
-                <img src="https://static01.imgkr.com/temp/e4fea692aa8d4a5aaa52d9ea269f98e9.png">
+                <img src="static/list.png">
             </a></li>
         </ul>
 </nav>
@@ -244,31 +243,31 @@ text-align: center;
 </div>
 
 <div class="wrapper">
-        <div class="items">
-            {% for name,pic,price,url in buffer %}
-            <div class="item">
-                <div class="img_block">
-                    <img src={{pic}} alt="item" />
-                </div>
-                <div class="name_block">
-                    <h2>{{name}}</h2>
-                </div>
-                <div class="game_tag">
-                    tag
-                </div>
-                <div>
-                    <a  class="price"><em>${{price}}</em></a>
-                    <a class="details"  onclick="load_detail('{{url}}','{{name}}')">
-                    <em>Details>></em>
-                    </a>
-                </div>
+    <div class="items">
+        {% for name,pic,price,url in buffer %}
+        <div class="item">
+            <div class="img_block">
+                <img src={{pic}} alt="item" />
             </div>
-            {% endfor %}
+            <div class="name_block">
+                <h2>{{name}}</h2>
+            </div>
+            <div class="game_tag">
+                tag
+            </div>
+            <div>
+                <a  class="price"><em>${{price}}</em></a>
+                <a class="details"  onclick="load_detail('{{url}}','{{name}}')">
+                <em>Details>></em>
+                </a>
+            </div>
         </div>
-        <div class = "load_block">
-            <p> </p>
-            <a class="loadmore"> <<< load more >>> </a>
-        </div>
+        {% endfor %}
     </div>
+    <div class = "load_block">
+        <p> </p>
+        <a class="loadmore"> <<< load more >>> </a>
+    </div>
+</div>
 </body>
 </html>
