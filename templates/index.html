@@ -55,10 +55,11 @@
 <div class="mask"></div>
 <div id="sidebar">
 	<ul>
+        <li><a class="current_user">{{current_user}}</a></li>
         <li>
         <form action="/update_uid" method="post">
-            <a>User ID:</a> <input type="text" name="uid" id="uid">
-            <input type="submit" value="Submit">
+            <a>login with User ID:</a> <input type="text" name="uid" id="uid">
+            <input type="submit" value="Login">
         </form>
         </li>
         <br><br>

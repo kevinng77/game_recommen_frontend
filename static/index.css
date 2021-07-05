@@ -157,7 +157,6 @@ text-align: center;
 	text-decoration: none;
 	color:#fff;
 	width: 100%;
-    font-size: 20px;
 }
 #sidebar ul li{
     width: 90%;
@@ -187,8 +186,12 @@ input[type=submit]{
     cursor: pointer;
     border:none;
  		}
+.current_user{
+    font-size: 40px;
+    margin: 0 0 20px 0;
+}
 .about_me{
-    margin: 280px 0 0 0 ;
+    margin: 100px 0 0 0 ;
     bottom: 0;
     cursor: pointer;
 }

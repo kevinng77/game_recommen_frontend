@@ -23,7 +23,7 @@ current_id = config.num_show
 @app.route('/index')
 def index():
     # TODO 初始化，展示热门商品 most pop
-    return render_template("index.html", buffer=msg[:config.num_show])
+    return render_template("index.html", buffer=msg[:config.num_show],current_user="kevin")
 
 
 @app.route('/loadmore')
@@ -57,7 +57,7 @@ def update_uid():
     selected_ids[0] = 791950
     # 791950 / Hiking_Simulator_2018
     user_interest = web_utils.gen_msg(applist, config.max_title_len, selected_ids)
-    return render_template("index.html", buffer=user_interest[:config.num_show])
+    return render_template("index.html", buffer=user_interest[:config.num_show],current_user=str(user))
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000, debug=True)
