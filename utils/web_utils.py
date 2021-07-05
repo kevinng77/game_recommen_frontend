@@ -66,6 +66,7 @@ def update_item_weight(appid, rating_map, df_svd, top_k, temperature, type="clic
     update recommend item weight when user click
     :return:
     """
+    print(type)
     list_similar_app, item_sim = knn(int(appid), df_svd, top_k)
     for i in range(len(list_similar_app)):
         similar_app = list_similar_app[i]
@@ -76,7 +77,6 @@ def update_item_weight(appid, rating_map, df_svd, top_k, temperature, type="clic
                     print(similar_level * temperature, end=" ")
                     rating_map[similar_app] *= (1 + similar_level * temperature)
             elif type == "dislike":
-                print(type)
                 rating_map[similar_app] /= (1.1 + similar_level * temperature)
             else:
                 if similar_level > 0:
