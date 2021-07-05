@@ -9,9 +9,12 @@ from datetime import datetime
 
 app = Flask(__name__)
 
+# init app data
 applist = pd.read_csv(config.game_info_path).set_index("AppID")
-selected_ids = random.choices(applist.index, k=1000)
-selected_ids[0] = 524490
+
+
+selected_ids = random.choices(applist.index, k=1000) # test
+selected_ids[0] = 524490 # test
 msg = web_utils.gen_msg(applist, config.max_title_len, selected_ids)
 current_id = config.num_show
 
@@ -19,6 +22,7 @@ current_id = config.num_show
 @app.route('/')
 @app.route('/index')
 def index():
+    # TODO 初始化，展示热门商品 most pop
     return render_template("index.html", buffer=msg[:config.num_show])
 
 
@@ -38,7 +42,7 @@ def load_more():
 @app.route('/click')
 def click():
     text = request.args.get('msg')
-    # TODO 通过用户点击更新推荐列表
+    # TODO 通过用户点击更新推荐列表，加大同类商品比重
     print(text)
     print(datetime.now())
     return 'None'

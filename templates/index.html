@@ -2,207 +2,7 @@
 <head>
     <meta http-equiv ="content-type" content="text/html;charset=utf-8">
     <title>游戏画廊</title>
-    <style>
-        * {
-    margin: 0;
-    padding: 0;
-}
-body {
-    background-color: #F2EEE9;
-    font: normal 13px/1.5 Georgia, Serif;
-    color: #333;
-}
-.title_block{
-    position: fixed;
-    left: 10px;
-}
-.title{
-    font-size: 30px;
-    color: white;
-    position: relative;
-    border: white;
-}
-h2 {
-    font-size: 16px;
-    display: block;
-}
-.mask{
-	position: fixed;
-	right:-300px;
-	top:0;
-	bottom: 0;
-	color:#fff;
-	width :300px;
-	background: #333;
-	text-align: center;
-	/*加出来的动画*/
-	transition: right 0.5s;
-}
-.wrapper {
-    width: 800px;
-    margin: 36px auto;
-    padding: 20px;
-}
-.items {
-    display: block;
-    margin: 20px 0;
-}
-.item {
-    background-color: #fff;
-    float: left;
-    margin: 0 10px 10px 0;
-    width: 235px;
-    padding: 10px;
-    height: 220px;
-}
-.img_block{
-    background-color: #fff;
-    float: left;
-    width: 235px;
-    height: 120px;
-}
-.name_block{
-    background-color: #fff;
-    margin: 0 4px;
-    float: left;
-    width: 240px;
-    height: 50px;
-}
-.game_tag{
-    margin: 0 4px 4px;
-    font-size: 16px;
-}
-.item img {
-    display: block;
-    margin: auto;
-    width: 100%;
-}
-.details {
-    padding: 4px 14px;
-    background-color: #fff;
-    color: #722A1B;
-    text-transform: uppercase;
-    float: right;
-    margin: auto 0;
-    font-weight: bold;
-    cursor: pointer;
-}
-.price{
-    font-size: 18px;
-    margin: 0 4px;
-}
-.load_block{
-    text-align: center;
-    font-size: 48px;
-}
-.loadmore{
-    position: relative;
-    font-size: 24px;
-    cursor: pointer;
-}
-span {
-    float: right;
-}
-nav{
-width: 100%;
-height: 50px;
-background: rgba(21, 21, 21, 0.7);
-position: fixed;
-top: 0;
-}
-.link{
-    list-style: none;
-line-height: 30px;
-float: right;
-position: fixed;
-    right: 20px;
-}
-.link li{
-float: left;
-text-align: center;
-}
-.link a{
-    font-size: 16px;
-    cursor: pointer;
-    padding: 10px 15px;
-    color: white;
-    text-decoration: none;
-    display: block;
-    position: relative;
-}
-.link img{
-    width: 30px;
-    height: 30px;
-}
-#sidebar{
-	/*display: none;*/
-	position: fixed;
-	right:-18%;
-	top:50px;
-	bottom: 0;
-	color:#fff;
-	width :18%;
-	background: #333;
-	text-align: center;
-	/*加出来的动画*/
-	transition: right 0.5s;
-}
-#sidebar ul{
-	list-style: none;
-	padding: 0;
-	margin: 30px 0 0 0;
-	width: 100%;
-    position: center;
-}
-/*侧边栏打开后显示遮罩层，变现出层级效果*/
-.mask{
-	display: none;
-    width: 82%;
-	position: fixed;
-	left: 0;
-	right: 0;
-	top: 50px;
-	bottom: 0;
-	background: rgba(0,0,0,0.5);
-}
-/*右侧边栏*/
-#sidebar ul a{
-	display: inline-block;
-	text-decoration: none;
-	color:#fff;
-	width: 100%;
-    font-size: 20px;
-}
-#sidebar ul li{
-    width: 90%;
-    margin: 0 15px;
-}
-#sidebar ul a:hover{
-	background: #444;;
-	width: 100%
-}
-#sidebar ul input{
-    margin: 10px;
-}
-
-input[type=text]{
-        background-color: rgb(51,51,51);
-    color: #ffffff;
-    border-style: none;
-    border-bottom-color: #ffffff;
-    border-bottom-style: groove;
-}
-
-input[type=submit]{
-    background-color: rgb(51,51,51);
-    color: #ffffff;
-    text-transform: uppercase;
-    margin: auto 0;
-    font-weight: bold;
-    cursor: pointer;
-    border:none;
- 		}
-    </style>
+    <style>@import "static/index.css";</style>
     <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
@@ -244,8 +44,6 @@ input[type=submit]{
         <a class="title" haref="#">Games Gallary</a>
     </div>
         <ul class="link">
-            <li><a onclick="window.open('http://wujiawen.xyz')">
-                About me</a></li>
             <li ><a onclick="window.open('https://github.com/kevinng77/game_recommen_frontend')">
                 <img src="https://cdn3.iconfinder.com/data/icons/social-rounded-2/72/GitHub-256.png">
             </a></li>
@@ -254,7 +52,6 @@ input[type=submit]{
             </a></li>
         </ul>
 </nav>
-
 <div class="mask"></div>
 <div id="sidebar">
 	<ul>
@@ -265,11 +62,13 @@ input[type=submit]{
         </form>
         </li>
         <br><br>
-        <li>Recommend based on user history.</li>
-        <li>Updated recommend result based on what you click.</li>
+        <li>Recommend based on:<br>
+            - User History<br>
+            - What you have Clicked</li>
+        <li><a class="about_me" onclick="window.open('http://wujiawen.xyz')">
+        About me</a></li>
 	</ul>
 </div>
-
 <div class="wrapper">
     <div class="items">
         {% for name,pic,price,url in buffer %}
