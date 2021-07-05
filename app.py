@@ -5,17 +5,19 @@ import random
 from config import config
 from utils import web_utils
 from datetime import datetime
-
+import numpy as np
 
 app = Flask(__name__)
 
 # init app data
-applist = pd.read_csv(config.game_info_path).set_index("AppID")
+df_App = pd.read_csv(config.game_info_path).set_index("AppID")
+app_rate = np.random.rand(len(df_App))
+AppIDs = list(df_App.index)
+# AppNames =
 
-
-selected_ids = random.choices(applist.index, k=1000) # test
+selected_ids = random.choices(df_App.index, k=1000) # test
 selected_ids[0] = 524490 # test
-msg = web_utils.gen_msg(applist, config.max_title_len, selected_ids)
+msg = web_utils.gen_msg(df_App, config.max_title_len, selected_ids)
 current_id = config.num_show
 
 
@@ -32,18 +34,19 @@ def load_more():
     outputs = ""
     for i in range(config.num_more_line * 3):
         current_item = msg[current_id + i]
-        name, pic, price, url = current_item
+        Appid,name, pic, price, url,genre = current_item
         outputs += web_utils.load_more_formatting(pic=pic, name=name, price=price,
-                                                  url=url)
+                                                  url=url,Appid=Appid, other=genre)
     current_id += config.num_more_line * 3
     return outputs
 
 
 @app.route('/click')
 def click():
-    text = request.args.get('msg')
+    Appid = request.args.get('aid')
+    AppName = request.args.get('AppName')
     # TODO 通过用户点击更新推荐列表，加大同类商品比重
-    print(text)
+    print(Appid,AppName)
     print(datetime.now())
     return 'None'
 
@@ -56,7 +59,7 @@ def update_uid():
     # user_interest_ids = get_user_interest(user)
     selected_ids[0] = 791950
     # 791950 / Hiking_Simulator_2018
-    user_interest = web_utils.gen_msg(applist, config.max_title_len, selected_ids)
+    user_interest = web_utils.gen_msg(df_App, config.max_title_len, selected_ids)
     return render_template("index.html", buffer=user_interest[:config.num_show],current_user=str(user))
 
 if __name__ == "__main__":

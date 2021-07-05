@@ -12,9 +12,9 @@
         		}});
         	});
         });
-         function load_detail(url,name){
+         function load_detail(url,Appid,Appname){
             window.open(url);
-            $.get("/click", {msg: name}).done();
+            $.get("/click", {aid: Appid,AppName:Appname}).done();
         }
         $(function(){
           'use strict';
@@ -72,7 +72,7 @@
 </div>
 <div class="wrapper">
     <div class="items">
-        {% for name,pic,price,url in buffer %}
+        {% for Appid,name,pic,price,url,other in buffer %}
         <div class="item">
             <div class="img_block">
                 <img src={{pic}} alt="item" />
@@ -81,11 +81,11 @@
                 <h2>{{name}}</h2>
             </div>
             <div class="game_tag">
-                tag
+                {{other}}
             </div>
             <div>
                 <a  class="price"><em>${{price}}</em></a>
-                <a class="details"  onclick="load_detail('{{url}}','{{name}}')">
+                <a class="details"  onclick="load_detail('{{url}}','{{Appid}}','{{name}}')">
                 <em>Details>></em>
                 </a>
             </div>
