@@ -11,15 +11,13 @@ def gen_msg(applist, max_title_len, selected_ids):
     :param selected_ids: AppID to recommended
     :return: list of tuple (AppName, picture, )
     """
-    df_selected_game = applist[applist.AppID.apply(lambda x: x in selected_ids)]
-
+    df_selected_game = applist.loc[selected_ids]
     l_name = df_selected_game.AppName.tolist()
     l_name = [process_title(x, max_title_len) for x in l_name]
     l_view = df_selected_game.Picture.tolist()
     l_url = df_selected_game.url.tolist()
     l_price = df_selected_game.final_price.tolist()
     msg = list(zip(l_name, l_view, l_price, l_url))
-    # TODO add price,
     return msg
 
 

@@ -9,8 +9,9 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-applist = pd.read_csv(config.game_info_path)
-selected_ids = random.choices(applist.AppID, k=1000)
+applist = pd.read_csv(config.game_info_path).set_index("AppID")
+selected_ids = random.choices(applist.index, k=1000)
+selected_ids[0] = 524490
 msg = web_utils.gen_msg(applist, config.max_title_len, selected_ids)
 current_id = config.num_show
 
@@ -42,6 +43,17 @@ def click():
     print(datetime.now())
     return 'None'
 
+
+@app.route('/update_uid',methods=["post"])
+def update_uid():
+    user = request.form.get('uid')
+    print(user)
+    # TODO 用户个性化展示
+    # user_interest_ids = get_user_interest(user)
+    selected_ids[0] = 791950
+    # 791950 / Hiking_Simulator_2018
+    user_interest = web_utils.gen_msg(applist, config.max_title_len, selected_ids)
+    return render_template("index.html", buffer=user_interest[:config.num_show])
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000, debug=True)

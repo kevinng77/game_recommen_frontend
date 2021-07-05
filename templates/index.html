@@ -90,7 +90,6 @@ h2 {
 .price{
     font-size: 18px;
     margin: 0 4px;
-
 }
 .load_block{
     text-align: center;
@@ -108,7 +107,6 @@ nav{
 width: 100%;
 height: 50px;
 background: rgba(21, 21, 21, 0.7);
-
 position: fixed;
 top: 0;
 }
@@ -139,11 +137,11 @@ text-align: center;
 #sidebar{
 	/*display: none;*/
 	position: fixed;
-	right:-300px;
-	top:0;
+	right:-18%;
+	top:50px;
 	bottom: 0;
 	color:#fff;
-	width :300px;
+	width :18%;
 	background: #333;
 	text-align: center;
 	/*加出来的动画*/
@@ -158,10 +156,11 @@ text-align: center;
 /*侧边栏打开后显示遮罩层，变现出层级效果*/
 .mask{
 	display: none;
+    width: 82%;
 	position: fixed;
 	left: 0;
 	right: 0;
-	top: 0;
+	top: 50px;
 	bottom: 0;
 	background: rgba(0,0,0,0.5);
 }
@@ -235,6 +234,12 @@ text-align: center;
 <div class="mask"></div>
 <div id="sidebar">
 	<ul>
+        <li>
+        <form action="/update_uid" method="post">
+            User ID: <input type="text" name="uid" id="uid">
+            <input type="submit" value="Submit">
+        </form>
+        </li>
 		<li><a href="#">list2</a></li>
 		<li><a href="#">list2</a></li>
 		<li><a href="#">list2</a></li>
