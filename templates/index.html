@@ -150,8 +150,9 @@ text-align: center;
 #sidebar ul{
 	list-style: none;
 	padding: 0;
-	margin: 0;
+	margin: 30px 0 0 0;
 	width: 100%;
+    position: center;
 }
 /*侧边栏打开后显示遮罩层，变现出层级效果*/
 .mask{
@@ -166,18 +167,41 @@ text-align: center;
 }
 /*右侧边栏*/
 #sidebar ul a{
-
-	padding:10px 20px;
 	display: inline-block;
 	text-decoration: none;
 	color:#fff;
 	width: 100%;
+    font-size: 20px;
+}
+#sidebar ul li{
+    width: 90%;
+    margin: 0 15px;
 }
 #sidebar ul a:hover{
 	background: #444;;
 	width: 100%
 }
+#sidebar ul input{
+    margin: 10px;
+}
 
+input[type=text]{
+        background-color: rgb(51,51,51);
+    color: #ffffff;
+    border-style: none;
+    border-bottom-color: #ffffff;
+    border-bottom-style: groove;
+}
+
+input[type=submit]{
+    background-color: rgb(51,51,51);
+    color: #ffffff;
+    text-transform: uppercase;
+    margin: auto 0;
+    font-weight: bold;
+    cursor: pointer;
+    border:none;
+ 		}
     </style>
     <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
     <script>
@@ -236,14 +260,13 @@ text-align: center;
 	<ul>
         <li>
         <form action="/update_uid" method="post">
-            User ID: <input type="text" name="uid" id="uid">
+            <a>User ID:</a> <input type="text" name="uid" id="uid">
             <input type="submit" value="Submit">
         </form>
         </li>
-		<li><a href="#">list2</a></li>
-		<li><a href="#">list2</a></li>
-		<li><a href="#">list2</a></li>
-		<li><a href="#">list2</a></li>
+        <br><br>
+        <li>Recommend based on user history.</li>
+        <li>Updated recommend result based on what you click.</li>
 	</ul>
 </div>
 
