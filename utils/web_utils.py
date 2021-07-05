@@ -47,7 +47,7 @@ def load_more_formatting(pic, name, price, url, appid, other="todo: adding tag")
                f'<div class="img_block">' \
                f'<img src="{pic}" alt="item" />' \
                f'</div><div class="name_block">' \
-               f'<h2>{name}</h2></div>' \
+               f'<a>{name}</a></div>' \
                f'<div class="game_tag">{other}' \
                f'<a class="dislike" onclick="update_like(\'{appid}\',\'{name}\',\'dislike\')">' \
                f'<img src="static/dislike.png"></a>' \
