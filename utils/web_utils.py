@@ -2,22 +2,22 @@ import numpy as np
 import pandas as pd
 
 
-def init_user_page(uid,df_App,max_title_len,num_show, seed=7):
+def init_user_page(uid, df_app, max_title_len, num_show, seed=7):
     np.random.seed(seed)
-    rating_map = get_rate_mapping(df_App,user_pre=uid)
+    rating_map = get_rate_mapping(df_app, user_pre=uid)
     s_ids = sorted(rating_map, key=lambda x: rating_map[x])
-    msg = gen_msg(df_App, max_title_len, s_ids)
+    msg = gen_msg(df_app, max_title_len, s_ids)
     items = [msg.pop() for _ in range(num_show)]
     for sid in [str(x[0]) for x in items]:
         rating_map.pop(sid)
-    return items,rating_map
+    return items, rating_map
 
 
-def get_rate_mapping(df_App, user_pre = None):
+def get_rate_mapping(df_app, user_pre=None):
     # load app info
     # TODO: ADD user App preference : app_rate = user_pre
-    app_rate = np.random.rand(len(df_App))
-    AppIDs = list(df_App.index)
+    app_rate = np.random.rand(len(df_app))
+    AppIDs = list(df_app.index)
     rating_map = {str(AppIDs[i]): app_rate[i] for i in range(len(AppIDs))}
     return rating_map
 

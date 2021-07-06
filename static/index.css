@@ -224,7 +224,7 @@ input[type=submit]{
     cursor: pointer;
     border:none;
     position: relative;
- 		}
+}
 #current_user{
     font-size: 40px;
     margin: 0 0 20px 0;

@@ -365,3 +365,103 @@
 192.168.1.74 - - [06/Jul/2021 12:24:42] "[36mGET /static/dislike.png HTTP/1.1[0m" 304 -
 192.168.1.74 - - [06/Jul/2021 12:24:44] "GET /loadmore?uid=1234 HTTP/1.1" 200 -
 192.168.1.74 - - [06/Jul/2021 12:24:45] "GET /loadmore?uid=1234 HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jul/2021 12:31:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jul/2021 12:31:04] "[36mGET /static/index.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [06/Jul/2021 12:31:05] "[36mGET /static/list.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [06/Jul/2021 12:31:05] "[36mGET /static/dislike.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [06/Jul/2021 12:31:06] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [06/Jul/2021 12:31:19] "GET /loadmore?uid=kevin HTTP/1.1" 200 -
+> user kevin like Shady Part of Me, time: 2021-07-06 12:31:32.943074
+127.0.0.1 - - [06/Jul/2021 12:31:33] "POST /update_like HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jul/2021 12:31:34] "GET /loadmore?uid=kevin HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jul/2021 12:32:30] "GET /loadmore?uid=kevin HTTP/1.1" 200 -
+> user kevin dislike Ballance: The Return, time: 2021-07-06 12:32:38.468306
+127.0.0.1 - - [06/Jul/2021 12:32:38] "POST /update_like HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jul/2021 12:32:40] "GET /loadmore?uid=kevin HTTP/1.1" 200 -
+> user kevin like WhiteLily 1：丽丽公主, time: 2021-07-06 12:32:46.146114
+127.0.0.1 - - [06/Jul/2021 12:32:46] "POST /update_like HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jul/2021 12:32:47] "GET /loadmore?uid=kevin HTTP/1.1" 200 -
+ * Detected change in '/home/kevin/nut/1_project/rs/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 875-908-151
+192.168.1.74 - - [06/Jul/2021 13:02:35] "POST /update_uid HTTP/1.1" 200 -
+192.168.1.74 - - [06/Jul/2021 13:02:35] "[36mGET /static/index.css HTTP/1.1[0m" 304 -
+192.168.1.74 - - [06/Jul/2021 13:02:35] "[36mGET /static/list.png HTTP/1.1[0m" 304 -
+192.168.1.74 - - [06/Jul/2021 13:02:35] "[36mGET /static/dislike.png HTTP/1.1[0m" 304 -
+192.168.1.74 - - [06/Jul/2021 13:02:39] "GET /loadmore?uid=1234 HTTP/1.1" 200 -
+192.168.1.74 - - [06/Jul/2021 13:02:42] "POST /update_uid HTTP/1.1" 200 -
+192.168.1.74 - - [06/Jul/2021 13:02:42] "[36mGET /static/index.css HTTP/1.1[0m" 304 -
+192.168.1.74 - - [06/Jul/2021 13:02:42] "[36mGET /static/list.png HTTP/1.1[0m" 304 -
+192.168.1.74 - - [06/Jul/2021 13:02:42] "[36mGET /static/dislike.png HTTP/1.1[0m" 304 -
+> user 1234 like Divine Slice of Life, time: 2021-07-06 13:02:43.786504
+192.168.1.74 - - [06/Jul/2021 13:02:43] "[35m[1mPOST /update_like HTTP/1.1[0m" 500 -
+192.168.1.74 - - [06/Jul/2021 13:02:44] "GET /loadmore?uid=1234 HTTP/1.1" 200 -
+> user 1234 like Divine Slice of Life, time: 2021-07-06 13:02:51.482960
+192.168.1.74 - - [06/Jul/2021 13:02:51] "[35m[1mPOST /update_like HTTP/1.1[0m" 500 -
+192.168.1.74 - - [06/Jul/2021 13:02:52] "GET /loadmore?uid=1234 HTTP/1.1" 200 -
+192.168.1.74 - - [06/Jul/2021 13:02:57] "POST /update_uid HTTP/1.1" 200 -
+192.168.1.74 - - [06/Jul/2021 13:02:57] "[36mGET /static/list.png HTTP/1.1[0m" 304 -
+192.168.1.74 - - [06/Jul/2021 13:02:57] "[36mGET /static/index.css HTTP/1.1[0m" 304 -
+192.168.1.74 - - [06/Jul/2021 13:02:57] "[36mGET /static/dislike.png HTTP/1.1[0m" 304 -
+> user 1234 like Divine Slice of Life, time: 2021-07-06 13:03:00.503419
+192.168.1.74 - - [06/Jul/2021 13:03:00] "[35m[1mPOST /update_like HTTP/1.1[0m" 500 -
+> user 1234 like Divine Slice of Life, time: 2021-07-06 13:03:00.659227
+192.168.1.74 - - [06/Jul/2021 13:03:00] "[35m[1mPOST /update_like HTTP/1.1[0m" 500 -
+192.168.1.74 - - [06/Jul/2021 13:03:01] "GET /loadmore?uid=1234 HTTP/1.1" 200 -
+ * Detected change in '/home/kevin/nut/1_project/rs/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 144-702-377
+192.168.1.74 - - [06/Jul/2021 13:03:36] "POST /update_uid HTTP/1.1" 200 -
+192.168.1.74 - - [06/Jul/2021 13:03:36] "[36mGET /static/list.png HTTP/1.1[0m" 304 -
+192.168.1.74 - - [06/Jul/2021 13:03:36] "[36mGET /static/index.css HTTP/1.1[0m" 304 -
+192.168.1.74 - - [06/Jul/2021 13:03:36] "[36mGET /static/dislike.png HTTP/1.1[0m" 304 -
+192.168.1.74 - - [06/Jul/2021 13:03:40] "GET /loadmore?uid=1234 HTTP/1.1" 200 -
+192.168.1.74 - - [06/Jul/2021 13:03:42] "POST /update_uid HTTP/1.1" 200 -
+192.168.1.74 - - [06/Jul/2021 13:03:42] "[36mGET /static/index.css HTTP/1.1[0m" 304 -
+192.168.1.74 - - [06/Jul/2021 13:03:42] "[36mGET /static/list.png HTTP/1.1[0m" 304 -
+192.168.1.74 - - [06/Jul/2021 13:03:42] "[36mGET /static/dislike.png HTTP/1.1[0m" 304 -
+> user 1234 like Divine Slice of Life, time: 2021-07-06 13:03:44.469480
+192.168.1.74 - - [06/Jul/2021 13:03:44] "POST /update_like HTTP/1.1" 200 -
+192.168.1.74 - - [06/Jul/2021 13:03:45] "GET /loadmore?uid=1234 HTTP/1.1" 200 -
+ * Detected change in '/home/kevin/nut/1_project/rs/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 117-531-049
+192.168.1.74 - - [06/Jul/2021 13:17:23] "POST /update_uid HTTP/1.1" 200 -
+192.168.1.74 - - [06/Jul/2021 13:17:23] "[36mGET /static/list.png HTTP/1.1[0m" 304 -
+192.168.1.74 - - [06/Jul/2021 13:17:23] "[36mGET /static/index.css HTTP/1.1[0m" 304 -
+192.168.1.74 - - [06/Jul/2021 13:17:23] "[36mGET /static/dislike.png HTTP/1.1[0m" 304 -
+192.168.1.74 - - [06/Jul/2021 13:17:56] "POST /update_uid HTTP/1.1" 200 -
+192.168.1.74 - - [06/Jul/2021 13:17:56] "[36mGET /static/index.css HTTP/1.1[0m" 304 -
+192.168.1.74 - - [06/Jul/2021 13:17:56] "[36mGET /static/list.png HTTP/1.1[0m" 304 -
+192.168.1.74 - - [06/Jul/2021 13:17:56] "[36mGET /static/dislike.png HTTP/1.1[0m" 304 -
+ * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://192.168.1.74:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 103-342-241
+192.168.1.74 - - [06/Jul/2021 13:21:08] "GET / HTTP/1.1" 200 -
+192.168.1.74 - - [06/Jul/2021 13:21:08] "[36mGET /static/index.css HTTP/1.1[0m" 304 -
+192.168.1.74 - - [06/Jul/2021 13:21:08] "[36mGET /static/list.png HTTP/1.1[0m" 304 -
+192.168.1.74 - - [06/Jul/2021 13:21:08] "[36mGET /static/dislike.png HTTP/1.1[0m" 304 -
+ * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://192.168.1.74:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 144-764-173
+ * Detected change in '/home/kevin/nut/1_project/rs/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 742-355-437
+ * Detected change in '/home/kevin/nut/1_project/rs/utils/web_utils.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 131-703-936
+ * Detected change in '/home/kevin/nut/1_project/rs/config/config.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 431-878-601

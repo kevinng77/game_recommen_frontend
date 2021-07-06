@@ -11,7 +11,6 @@ import os
 import sys
 
 logger = logging.getLogger()
-logger.setLevel(logging.INFO)
 if not os.path.exists(config.working_path + config.logging_path):
     os.mkdir(config.working_path + config.logging_path)
 handler = logging.FileHandler(config.working_path + config.logging_path + "/server_log.txt")
@@ -31,7 +30,7 @@ df_App = pd.read_csv(config.game_info_path).set_index("AppID")
 @app.route('/index')
 def index():
     items, rating_map = web_utils.init_user_page(uid="kevin",
-                                                 df_App=df_App,
+                                                 df_app=df_App,
                                                  max_title_len=config.max_title_len,
                                                  num_show=config.num_show,
                                                  seed=config.seed)
@@ -71,12 +70,12 @@ def update_like():
 
     with open(f"{config.R_ui_path}{data.get('uid')}.json", "r")as fp:
         rating_map = json.load(fp)
-    rating_map = web_utils.update_item_weight(data.get('aid'),
-                                              rating_map,
-                                              df_svd=df_svd,
-                                              top_k=config.top_knn,
-                                              temperature=config.temperature,
-                                              type=data.get('type'))
+        rating_map = web_utils.update_item_weight(data.get('aid'),
+                                                  rating_map,
+                                                  df_svd=df_svd,
+                                                  top_k=config.top_knn,
+                                                  temperature=config.temperature,
+                                                  type=data.get('type'))
     with open(f"{config.R_ui_path}{data.get('uid')}.json", "w")as fp:
         json.dump(rating_map, fp=fp, indent=2)
     return 'None'
@@ -87,7 +86,7 @@ def update_uid():
     uid = request.form.get('uid')
     # TODO 用户个性化展示
     items, rating_map = web_utils.init_user_page(uid=uid,
-                                                 df_App=df_App,
+                                                 df_app=df_App,
                                                  max_title_len=config.max_title_len,
                                                  num_show=config.num_show,
                                                  seed=config.seed)
