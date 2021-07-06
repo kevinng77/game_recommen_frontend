@@ -7,17 +7,20 @@
     <script>
         $(document).ready(function(){
         	$(".loadmore").click(function(){
-        		$.ajax({url:"/loadmore",success:function(result){
+                var cuid = document.getElementById("current_user");
+        		$.ajax({url:"/loadmore",type: "GET",data:{"uid":cuid.innerHTML},success:function(result){
         			$(".items").append(result);
         		}});
         	});
         });
          function load_detail(url,Appid,Appname){
+            var cuid = document.getElementById("current_user");
             window.open(url);
-            $.post("/click", {aid: Appid,AppName:Appname}).done();
+             $.post("/update_like", {aid: Appid,AppName:Appname,type:"click",uid:cuid.innerHTML}).done();
         }
         function update_like(Appid, Appname, type){
-             $.post("/update_like", {aid: Appid,AppName:Appname,type:type}).done();
+             var cuid = document.getElementById("current_user");
+             $.post("/update_like", {aid: Appid,AppName:Appname,type:type,uid:cuid.innerHTML}).done();
         }
         $(function(){
           'use strict';
@@ -58,7 +61,7 @@
 <div class="mask"></div>
 <div id="sidebar">
 	<ul>
-        <li><a class="current_user">{{current_user}}</a></li>
+        <li><a id="current_user">{{current_user}}</a></li>
         <li>
         <form action="/update_uid" method="post">
             <a>login with User ID:</a>
@@ -93,7 +96,6 @@
                     <img src="https://cdn0.iconfinder.com/data/icons/twitter-ui-flat/48/Twitter_UI-24-256.png">
                 </a>
             </div>
-
             <div>
                 <a  class="price"><em>${{price}}</em></a>
                 <a class="details"  onclick="load_detail('{{url}}','{{Appid}}','{{name}}')">

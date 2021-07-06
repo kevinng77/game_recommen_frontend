@@ -26,6 +26,9 @@ num_more_load = num_per_line * args.num_lines_load
 # file path
 game_info_path = "data/steam_game_url_pic.csv"
 svd_path = "data/svd_d100.csv"
+R_ui_path = "user_item_rate/"
+working_path = "./"
+logging_path = "log"
 
 temperature = args.temperature
 top_knn = args.top_knn

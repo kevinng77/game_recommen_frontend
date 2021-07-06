@@ -225,7 +225,7 @@ input[type=submit]{
     border:none;
     position: relative;
  		}
-.current_user{
+#current_user{
     font-size: 40px;
     margin: 0 0 20px 0;
 }

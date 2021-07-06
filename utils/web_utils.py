@@ -2,13 +2,24 @@ import numpy as np
 import pandas as pd
 
 
-def item_info_loading(game_info_path):
+def init_user_page(uid,df_App,max_title_len,num_show, seed=7):
+    np.random.seed(seed)
+    rating_map = get_rate_mapping(df_App,user_pre=uid)
+    s_ids = sorted(rating_map, key=lambda x: rating_map[x])
+    msg = gen_msg(df_App, max_title_len, s_ids)
+    items = [msg.pop() for _ in range(num_show)]
+    for sid in [str(x[0]) for x in items]:
+        rating_map.pop(sid)
+    return items,rating_map
+
+
+def get_rate_mapping(df_App, user_pre = None):
     # load app info
-    df_App = pd.read_csv(game_info_path).set_index("AppID")
+    # TODO: ADD user App preference : app_rate = user_pre
     app_rate = np.random.rand(len(df_App))
     AppIDs = list(df_App.index)
-    rating_map = {AppIDs[i]: app_rate[i] for i in range(len(AppIDs))}
-    return df_App, rating_map
+    rating_map = {str(AppIDs[i]): app_rate[i] for i in range(len(AppIDs))}
+    return rating_map
 
 
 def item_feature_loading(svd_path):
@@ -31,6 +42,7 @@ def gen_msg(df_app, max_title_len, selected_ids):
     :param selected_ids: AppID to recommended
     :return: list of tuple (AppName, picture, )
     """
+    selected_ids = [int(x) for x in selected_ids]
     df_selected_game = df_app.loc[selected_ids]
     l_name = df_selected_game.AppName.tolist()
     l_name = [process_title(x, max_title_len) for x in l_name]
@@ -68,6 +80,7 @@ def update_item_weight(appid, rating_map, df_svd, top_k, temperature, type="clic
     """
     print(type)
     list_similar_app, item_sim = knn(int(appid), df_svd, top_k)
+    list_similar_app = [str(x) for x in list_similar_app]
     for i in range(len(list_similar_app)):
         similar_app = list_similar_app[i]
         similar_level = item_sim[i]
