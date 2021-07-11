@@ -29,7 +29,7 @@ df_App = pd.read_csv(config.game_info_path).set_index("AppID")
 @app.route('/')
 @app.route('/index')
 def index():
-    items, rating_map = web_utils.init_user_page(uid="kevin",
+    items, rating_map = web_utils.init_user_page(init_path=config.init_ui_path + "kevin.json",
                                                  df_app=df_App,
                                                  max_title_len=config.max_title_len,
                                                  num_show=config.num_show,
@@ -84,8 +84,7 @@ def update_like():
 @app.route('/update_uid', methods=["post"])
 def update_uid():
     uid = request.form.get('uid')
-    # TODO 用户个性化展示
-    items, rating_map = web_utils.init_user_page(uid=uid,
+    items, rating_map = web_utils.init_user_page(init_path=config.init_ui_path + f"{uid}.json",
                                                  df_app=df_App,
                                                  max_title_len=config.max_title_len,
                                                  num_show=config.num_show,

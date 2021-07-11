@@ -1,10 +1,12 @@
 import numpy as np
 import pandas as pd
+import os
+import json
 
 
-def init_user_page(uid, df_app, max_title_len, num_show, seed=7):
+def init_user_page(init_path, df_app, max_title_len, num_show, seed=7):
     np.random.seed(seed)
-    rating_map = get_rate_mapping(df_app, user_pre=uid)
+    rating_map = get_rate_mapping(df_app, user_init_path=init_path)
     s_ids = sorted(rating_map, key=lambda x: rating_map[x])
     msg = gen_msg(df_app, max_title_len, s_ids)
     items = [msg.pop() for _ in range(num_show)]
@@ -13,17 +15,19 @@ def init_user_page(uid, df_app, max_title_len, num_show, seed=7):
     return items, rating_map
 
 
-def get_rate_mapping(df_app, user_pre=None):
-    # load app info
-    # TODO: ADD user App preference : app_rate = user_pre
-    app_rate = np.random.rand(len(df_app))
-    AppIDs = list(df_app.index)
-    rating_map = {str(AppIDs[i]): app_rate[i] for i in range(len(AppIDs))}
+def get_rate_mapping(df_app, user_init_path=None):
+    if not os.path.exists(user_init_path):
+        # TODO: 读取默认推荐列表
+        app_rate = np.random.rand(len(df_app))
+        AppIDs = list(df_app.index)
+        rating_map = {str(AppIDs[i]): app_rate[i] for i in range(len(AppIDs))}
+    else:
+        with open(user_init_path, "r")as fp:
+            rating_map = json.load(fp)
     return rating_map
 
 
 def item_feature_loading(svd_path):
-    # load item feature
     df_svd = pd.read_csv(svd_path, index_col=0)
     return df_svd
 

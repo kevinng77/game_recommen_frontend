@@ -8,3 +8,4 @@ nohup.out
 data/
 log/*
 user_item_rate/*
+user_init_rate/*
