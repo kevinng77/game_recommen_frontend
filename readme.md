@@ -14,6 +14,8 @@
 │   └── list.png
 ├── templates
 │   └── index.html
+├── user_init_rate // initial recommend list gerenate from user purchase history
+├── user_item_rate // dynamic recommend list generated from user click
 └── utils
     └── web_utils.py
 ```
@@ -25,7 +27,11 @@ python app.py --temperature 0.5 --num_lines_load 4 --num_lines_init 8
 # or flask run
 ````
 
-Design consideration: [Blog - Once you click link of "dog", there will millions more. : 0]()
+`--temperature` how much your recommender system react to the user click behavior.
+
+`--num_lines_load` how much lines of games to load when you click loadmore
+
+`--num_lines_init` how much lines of games to load at initial.
 
 ## How like or dislike work?
 
