@@ -1,5 +1,7 @@
 # Game recommender
 
+A simple Steam Game recommender website. The recommendation result is dynamic, based on the game user puchased and what user click on the web page.
+
 ```c
 .
 ├── app.py
