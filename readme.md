@@ -1,5 +1,8 @@
 # Game recommender
 
+**WARNING - This is a toy project for course. The tech or tools used here might out of date!!**
+But it is fun to use simple KNN and SVD to build a dynamic recommender system.
+
 A simple Steam Game recommender website. The recommendation result is dynamic, based on the game user puchased and what user click on the web page.
 
 ```c
